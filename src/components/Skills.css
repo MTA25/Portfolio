@@ -1,0 +1,38 @@
+.skillsStyle {
+    background: linear-gradient(45deg , #00030EFF, #050F25FF);
+    padding: 30px 20px;
+    color: white;
+}
+.skillText{
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.skillsGridStyle {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+
+/*.skillsGridStyle {
+    
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}*/
+
+.skillItemStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}

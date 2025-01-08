@@ -1,0 +1,47 @@
+.aboutStyle {
+    text-align: left;
+    padding: 100px 600px;
+    color: #f4f4f4; /* Light text */
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    background-image: url('../assets/Images/AboutMeBG.jpg'); /* Add your image here */
+    background-size: cover; /* Ensure the image covers the section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Add an overlay to make text readable */
+    z-index: 1;
+}
+
+.contentStyle {
+    position: relative;
+    z-index: 2; /* Ensure content appears above the overlay */
+    text-align: center;
+    padding: 20px;
+}
+
+.titleStyle {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.readMoreStyle:hover {
+    background-color: #ffffff;
+    color: #222;
+}
+
+.aboutMeDescription{
+    text-align: left;
+    font-size: 1.2rem;
+}
