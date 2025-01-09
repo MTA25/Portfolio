@@ -21,7 +21,7 @@
 /* Grid Layout */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
     padding: 10px;
 }
@@ -82,8 +82,8 @@
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-    max-width: 600px;
-    width: 90%;
+    max-width: 1100px;
+    max-height: 1100px;
     text-align: center;
     position: relative;
 }
@@ -133,8 +133,8 @@
 }
 
 .popup-image {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -143,4 +143,55 @@
 
 .popup-image:hover {
     transform: scale(1.1);
+}
+
+/* Popup Image Container */
+.popup-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.popup-image-large {
+    max-width: 960px; /* Half of 1920 */
+    max-height: 540px; /* Half of 1080 */
+    width: auto; /* Ensures proper scaling */
+    height: auto; /* Ensures proper scaling */
+    object-fit: contain; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 0 20px; /* Adjust spacing */
+}
+
+
+.popup-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.popup-nav:hover {
+    transform: scale(1.1);
+}
+
+.popup-arrow {
+    width: 50px; /* Custom arrow image size */
+    height: 50px;
+    object-fit: contain;
+}
+
+.popup-nav.left {
+    left: -60px; /* Adjust based on the popup size */
+}
+
+.popup-nav.right {
+    right: -60px; /* Adjust based on the popup size */
+}
+.no-scroll {
+    overflow: hidden;
 }

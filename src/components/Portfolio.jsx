@@ -1,50 +1,47 @@
 import React, { useState } from "react";
 import "./Portfolio.css";
-import companyLogo from '../assets/Images/Projects/Azure5.png';
-import game2 from '../assets/Images/Projects/fliptiles1.jpg';
+import companyLogo from "../assets/Images/Projects/Azure5.png";
+import game2 from "../assets/Images/Projects/fliptiles1.jpg";
 
 const Portfolio = () => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const projects = [
         {
-            title: "Azure Dungeon Suurvival",
+            title: "Azure Dungeon Survival",
             description: "A thrilling game of strategy and luck.",
             images: [companyLogo, "path/to/mines2.png", "path/to/mines3.png"],
         },
         {
-            title: "Tile flip",
+            title: "Tile Flip",
             description: "Test your nerves with this fast-paced adventure.",
             images: [game2, "path/to/crash2.png", "path/to/crash3.png"],
-        },
-        {
-            title: "Roulette",
-            description: "Spin the wheel and try your luck!",
-            images: ["path/to/roulette1.png", "path/to/roulette2.png", "path/to/roulette3.png"],
-        },
-        {
-            title: "Ludo",
-            description: "A classic game reimagined for modern times.",
-            images: ["path/to/ludo1.png", "path/to/ludo2.png", "path/to/ludo3.png"],
-        },
-        {
-            title: "Jackpot",
-            description: "Can you hit the jackpot?",
-            images: ["path/to/jackpot1.png", "path/to/jackpot2.png", "path/to/jackpot3.png"],
-        },
-        {
-            title: "Coinflip",
-            description: "Heads or tails? Make your choice!",
-            images: ["path/to/coinflip1.png", "path/to/coinflip2.png", "path/to/coinflip3.png"],
         },
     ];
 
     const openPopup = (project) => {
         setSelectedProject(project);
+        setCurrentImageIndex(0);
+        document.body.classList.add("no-scroll");
     };
 
     const closePopup = () => {
         setSelectedProject(null);
+        setCurrentImageIndex(0);
+        document.body.classList.remove("no-scroll");
+    };
+
+    const handleNext = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === selectedProject.images.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    const handlePrev = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === 0 ? selectedProject.images.length - 1 : prevIndex - 1
+        );
     };
 
     return (
@@ -57,7 +54,11 @@ const Portfolio = () => {
                         className="portfolio-card"
                         onClick={() => openPopup(project)}
                     >
-                        <img src={project.images[0]} alt={project.title} className="project-image" />
+                        <img
+                            src={project.images[0]}
+                            alt={project.title}
+                            className="project-image"
+                        />
                         <div className="project-info">
                             <h2 className="project-title">{project.title}</h2>
                             <p className="project-description">{project.description}</p>
@@ -75,15 +76,18 @@ const Portfolio = () => {
                         </button>
                         <h2 className="popup-title">{selectedProject.title}</h2>
                         <p className="popup-description">{selectedProject.description}</p>
-                        <div className="popup-images">
-                            {selectedProject.images.map((image, idx) => (
-                                <img
-                                    key={idx}
-                                    src={image}
-                                    alt={`${selectedProject.title} ${idx + 1}`}
-                                    className="popup-image"
-                                />
-                            ))}
+                        <div className="popup-image-container">
+                            <button className="popup-nav" onClick={handlePrev}>
+                                ◀
+                            </button>
+                            <img
+                                src={selectedProject.images[currentImageIndex]}
+                                alt={`Slide ${currentImageIndex + 1}`}
+                                className="popup-image-large"
+                            />
+                            <button className="popup-nav" onClick={handleNext}>
+                                ▶
+                            </button>
                         </div>
                     </div>
                 </div>
